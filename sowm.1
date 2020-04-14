@@ -1,0 +1,71 @@
+.TH SOWM 1 sowm\-VERSION
+.SH NAME
+sowm \- Simple Opinionated Window Manager
+.SH SYNOPSIS
+.B dwm
+.RB [ \-v ]
+.SH DESCRIPTION
+sowm is an itsy bitsy floating window manager (220~ sloc / 24kb compiled!).
+.SH USAGE
+.SS Keyboard commands
+.TP
+.B Mod4\-Return
+Start
+.BR st(1).
+.TP
+.B Mod4\-d
+Spawn
+.BR dmenu(1)
+for launching other programs.
+.TP
+.B Mod4\m,
+lauchs ncmpcpp.
+.TP
+.B Mod4\p.
+lauches pulsemixer.
+.TP
+.B Mod4\-h
+move focused window to the left.
+.TP
+.B Mod4\-j
+move focused window to down.
+.TP
+.B Mod4\-k
+move focused window to up.
+.TP
+.B Mod4\-l
+move focused window to the right.
+.TP
+.B Mod4\-Shift\-h
+shrink the window from the right.
+.TP
+.B Mod4\-Shift\-j
+shrink the window from the top.
+.TP
+.B Mod4\-Shift\-k
+grow the window from the top.
+.TP
+.B Mod4\-Shift\-l
+grow the window from the right.
+.TP
+.B Mod4\-Tab
+Send focused window to next screen, if any.
+.TP
+.B Mod4\-Shift\-Tab
+Send focused window to previous screen, if any.
+.TP
+.B Mod4\-Shift\-q
+Kill focused window
+.SS Mouse commands
+.TP
+.B Mod4\-Button1
+Drag window.
+.TP
+.B Mod1\-Button2
+Resize window.
+.SH CUSTOMIZATION
+sowm is customized by creating a custom config.h and (re)compiling the source
+code.
+.SH SEE ALSO
+.BR dmenu (1),
+.BR st (1)

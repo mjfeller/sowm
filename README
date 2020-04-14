@@ -1,0 +1,50 @@
+sowm (*Simple Opinionated Window Manager*)
+==========================================
+
+An itsy bitsy floating window manager (*220~ sloc / 24kb compiled!*).
+
+- Floating only.
+- Fullscreen toggle.
+- Window centering.
+- Mix of mouse and keyboard workflow.
+- Focus with cursor.
+- Alt-Tab window focusing.
+- All windows die on exit.
+- No window borders.
+- No ICCCM ttps://web.archive.org/web/20190617214524/https://raw.githubusercontent.com/kfish/xsel/1a1c5edf0dc129055f7764c666da2dd468df6016/rant.txt
+- No EWMH.
+- etc etc etc
+
+Dependencies
+------------
+
+- `xlib` (*usually `libX11`*).
+
+
+Installation
+------------
+
+1) Copy `config.def.h` to `config.h` and modify it to suit your needs.
+2) Run `make` to build `sowm`.
+3) Copy it to your path or run `make install`.
+    - `DESTDIR` and `PREFIX` are supported.
+4) (Optional) Apply patch with `git apply patches/patch-name`
+    - In case of applying multiple patches, it has to be done **manually**.
+
+If you are using GDM, save the following to `/usr/share/xsessions/sowm.desktop`. It is still recommended to start `sowm` from `.xinitrc` or through
+[your own xinit implementation](https://github.com/dylanaraps/bin/blob/dfd9a9ff4555efb1cc966f8473339f37d13698ba/x).
+
+Thanks
+------
+
+- 2bwm
+- SmallWM
+- berry
+- catwm
+- dminiwm
+- dwm
+- monsterwm
+- openbox
+- possumwm
+- swm
+- tinywm

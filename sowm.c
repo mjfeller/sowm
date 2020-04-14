@@ -36,6 +36,19 @@ void win_focus(client *c) {
     XSetInputFocus(d, cur->w, RevertToParent, CurrentTime);
 }
 
+void win_move(const Arg arg) {
+	int r = arg.com[0][0] == 'r';
+	char m = arg.com[1][0];
+
+	win_size(cur->w, &wx, &wy, &ww, &wh);
+
+	XMoveResizeWindow(d, cur->w, \
+		wx + (r ? 0 : m == 'e' ?  arg.i : m == 'w' ? -arg.i : 0),
+		wy + (r ? 0 : m == 'n' ? -arg.i : m == 's' ?  arg.i : 0),
+		MAX(10, ww + (r ? m == 'e' ?  arg.i : m == 'w' ? -arg.i : 0 : 0)),
+		MAX(10, wh + (r ? m == 'n' ? -arg.i : m == 's' ?  arg.i : 0 : 0)));
+}
+
 void notify_destroy(XEvent *e) {
     win_del(e->xdestroywindow.window);
 
@@ -87,11 +100,16 @@ void button_release(XEvent *e) {
 
 void win_add(Window w) {
     client *c;
+    XWindowChanges wc;
 
     if (!(c = (client *) calloc(1, sizeof(client))))
         exit(1);
 
     c->w = w;
+
+    wc.border_width = BorderWidth;
+    XConfigureWindow(d, w, (1<<4), &wc);
+    XSetWindowBorder(d, w, 240 + (240<<8) + (240<<16));
 
     if (list) {
         list->prev->next = c;
@@ -138,7 +156,7 @@ void win_fs(const Arg arg) {
 
     if ((cur->f = cur->f ? 0 : 1)) {
         win_size(cur->w, &cur->wx, &cur->wy, &cur->ww, &cur->wh);
-        XMoveResizeWindow(d, cur->w, 0, 0, sw, sh);
+        XMoveResizeWindow(d, cur->w, -BorderWidth, -BorderWidth, sw, sh);
 
     } else {
         XMoveResizeWindow(d, cur->w, cur->wx, cur->wy, cur->ww, cur->wh);
