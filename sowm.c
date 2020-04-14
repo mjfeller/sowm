@@ -109,7 +109,7 @@ void win_add(Window w) {
 
     wc.border_width = BorderWidth;
     XConfigureWindow(d, w, (1<<4), &wc);
-    XSetWindowBorder(d, w, 240 + (240<<8) + (240<<16));
+    XSetWindowBorder(d, w, BorderColor);
 
     if (list) {
         list->prev->next = c;

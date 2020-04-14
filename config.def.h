@@ -2,13 +2,14 @@
 #define CONFIG_H
 
 #define BorderWidth 15
+#define BorderColor 240 + (240<<8) + (240<<16)
 #define MOD Mod4Mask
 
-const char* menu[]    = {"dmenu_run", 0};
-const char* term[]    = {"st", 0};
-const char* surf[]    = {"tabbed", "-c", "surf", "-e", 0};
-const char* music[]   = {"popup", "ncmpcpp", 0};
-const char* audio[]   = {"popup", "pulsemixer", 0};
+const char* menu[]  = {"dmenu_run", 0};
+const char* term[]  = {"st", 0};
+const char* surf[]  = {"tabbed", "-c", "surf", "-e", 0};
+const char* music[] = {"popup", "ncmpcpp", 0};
+const char* audio[] = {"popup", "pulsemixer", 0};
 
 static struct key keys[] = {
     {MOD,      XK_q,   win_kill,   {0}},
@@ -28,6 +29,7 @@ static struct key keys[] = {
     {Mod1Mask,           XK_Tab, win_next,   {0}},
     {Mod1Mask|ShiftMask, XK_Tab, win_prev,   {0}},
 
+    {MOD, XK_Return, run, {.com = term}},
     {MOD, XK_d,      run, {.com = menu}},
     {MOD, XK_m,      run, {.com = music}},
     {MOD, XK_w,      run, {.com = surf}},
